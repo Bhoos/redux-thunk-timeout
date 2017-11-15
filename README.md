@@ -14,8 +14,8 @@ import { startTimer } from 'redux-thunk-timeout';
 // The wait timer waits for 30 seconds before executing startGame (actionCreator)
 const waitTimer = () => startTimer(30000, startGame, 'wait');
 
-// Display summary for 15 seconds before executig startGame
-const finishTimer = () => startTimer(15000, startGame, 'summary');
+// Display summary infinitely. This should be stopped by some other user action
+const finishTimer = () => startTimer(-1, null, 'summary');
 
 // Customize timer to leverage the thunk extra arguments
 // If is the first round (using isFirstRound selector), then use different
@@ -32,6 +32,9 @@ dispatch(waitTimer());
 dispatch(pickTimer());
 
 ```
+
+*Note: An interval of -1 creates an infinite timer. The infinite timer doesn't
+stop on its own but must be stopped by stoptimer*
 
 ## Stop timers when not needed
 ```javascript
