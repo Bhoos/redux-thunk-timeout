@@ -11,7 +11,7 @@
     "clean": "rimraf __dist__",
     "lint": "eslint src",
     "build": "babel src --out-dir __dist__ --ignore node_modules,__tests__",
-    "prepublish": "npm run link && npm run test && npm run clean && npm run build"
+    "prepublish": "npm run lint && npm run test && npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
