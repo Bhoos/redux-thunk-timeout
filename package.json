@@ -1,6 +1,6 @@
 {
   "name": "redux-thunk-timeout",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A redux-thunk based timeout management library",
   "main": "__dist__/index.js",
   "files": [
