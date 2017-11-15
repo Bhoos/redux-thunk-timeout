@@ -1,0 +1,19 @@
+{
+  "name": "redux-thunk-timeout",
+  "version": "1.0.0",
+  "description": "A redux-thunk based timeout management library",
+  "main": "__dist__/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bhoos/redux-thunk-timeout.git"
+  },
+  "author": "Ranjan Shrestha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bhoos/redux-thunk-timeout/issues"
+  },
+  "homepage": "https://github.com/Bhoos/redux-thunk-timeout#readme"
+}
