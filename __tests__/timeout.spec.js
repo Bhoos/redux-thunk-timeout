@@ -128,7 +128,7 @@ describe('Test redux-thunk-timeout', () => {
     // Make sure there is no timer
     expect(getRunningTimer()).toBeFalsy();
 
-    // Make sure not timer is run
+    // Make sure no timer is run
     jest.runAllTimers();
     expect(store.getState()).toMatchObject({
       timeout: {
@@ -164,5 +164,38 @@ describe('Test redux-thunk-timeout', () => {
       test: { one: 2 },
     });
     expect(getRunningTimer()).toBeFalsy();
+  });
+
+  test('Infinite timer', () => {
+    const store = createStore(rootReducer, applyMiddleware(thunk));
+
+    // Start the timer
+    store.dispatch(startTimer(-1, () => action1(1), 'T1'));
+    expect(store.getState()).toMatchObject({
+      timeout: {
+        manager: 'DEFAULT',
+        timer: 'T1',
+        running: true,
+      },
+      test: {},
+    });
+    // Run any possible timer
+    jest.runAllTimers();
+
+    // The running timer should still be the same
+    expect(getRunningTimer()).toBe('T1');
+
+    // Stop the timer (only way to the infinite timer stops)
+    store.dispatch(stopTimer());
+    // Make sure the timeout has changed, with complete flag as false
+    expect(store.getState()).toMatchObject({
+      timeout: {
+        manager: 'DEFAULT',
+        timer: 'T1',
+        running: false,
+        complete: false,
+      },
+      test: {},
+    });
   });
 });
