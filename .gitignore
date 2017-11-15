@@ -1,0 +1,7 @@
+node_modules/
+
+# Mac specific
+.DS_Store
+
+# The build folder
+__dist__/
