@@ -8,7 +8,7 @@ export default function createTimeManager(id) {
 
   // The stop action
   function stop(complete = false) {
-    if (_handle !== null) {
+    if (_handle === null) {
       throw new Error('No timer is running to end');
     }
 
